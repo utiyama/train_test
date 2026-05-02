@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>でんしゃでGO！</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- タイトル画面 -->
+  <div id="title-screen">
+    <div id="title-box">
+      <h1>でんしゃで<span class="go">GO！</span></h1>
+      <p id="title-sub">まちの でんしゃを うんてんしよう！</p>
+      <div id="title-controls">
+        <div class="ctrl-hint">← → キーか ボタンで そうさ</div>
+        <div class="ctrl-hint">Z で ひじょうブレーキ</div>
+      </div>
+      <button id="btn-start">はじめる！</button>
+      <div id="final-score-area" hidden>
+        <h2>ゲームクリア！</h2>
+        <table id="score-table">
+          <thead><tr><th>えき</th><th>ずれ</th><th>てん</th></tr></thead>
+          <tbody id="score-tbody"></tbody>
+          <tfoot><tr><td colspan="2">ごうけい</td><td id="score-total"></td></tr></tfoot>
+        </table>
+        <button id="btn-retry">もう いちど！</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ゲームラッパー -->
+  <div id="game-wrapper">
+
+    <!-- メインCanvas -->
+    <div id="canvas-wrap">
+      <canvas id="game-canvas" width="800" height="440"></canvas>
+
+      <!-- Canvasオーバーレイ -->
+      <div id="overlay-msg" hidden></div>
+      <div id="stop-result" hidden>
+        <div id="stop-label"></div>
+        <div id="stop-stars"></div>
+        <div id="stop-pts"></div>
+      </div>
+      <div id="signal-warning" hidden>🔴 信号無視！</div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div id="hud-speed">
+        <div class="hud-label">スピード</div>
+        <div id="speed-value">0</div>
+        <div class="hud-unit">km/h</div>
+        <div id="speed-bar-wrap"><div id="speed-bar"></div></div>
+      </div>
+
+      <div id="hud-notch">
+        <div class="hud-label">パワー</div>
+        <div id="power-dots" class="notch-dots"></div>
+        <div class="hud-label" style="margin-top:4px">ブレーキ</div>
+        <div id="brake-dots" class="notch-dots"></div>
+      </div>
+
+      <div id="hud-info">
+        <div class="hud-label">つぎのえき</div>
+        <div id="next-station">さくらえき</div>
+        <div id="dist-value">---- m</div>
+      </div>
+
+      <div id="hud-score">
+        <div class="hud-label">スコア</div>
+        <div id="score-value">0</div>
+        <div class="hud-label" style="margin-top:4px">てん</div>
+      </div>
+    </div>
+
+    <!-- 操作ボタン -->
+    <div id="controls">
+      <button id="btn-brake" class="ctrl-btn brake-btn">◀ ブレーキ</button>
+      <button id="btn-emergency" class="ctrl-btn emergency-btn">⬛ ひじょう</button>
+      <button id="btn-power" class="ctrl-btn power-btn">パワー ▶</button>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
